@@ -1,0 +1,14 @@
+
+# src_dataset - Choice of source dataset. Options: [camels_us', 'camels_cl', or 'tnc_kenya']
+src_data: camels-us
+
+# tgt_dataset - Choice of target dataset. Options: ['camels_cl', or 'tnc_kenya']
+tgt_data: camels-cl
+
+# model - Choice of model. Options: ['cudalstm', 'gru', etc.]
+model: adaf
+
+# base_model = Choice of base_model (only for adaf at this point). Options ['lstm', 'mlp', 'tcn']
+base_model: mlp
+
+viz: prediction

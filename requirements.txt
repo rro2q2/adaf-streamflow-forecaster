@@ -1,0 +1,10 @@
+numpy
+pandas
+seaborn
+torch
+tqdm
+matplotlib
+yellowbrick
+omegaconf
+pathlib
+hydra-core
