@@ -17,7 +17,17 @@ The Python enviroment that uses transfer learning for hydrological time series m
 ### Hardware Requirements
 For improving model training and evaluation, we recommend using a multiple GPU cores. The CPU cores may take a long time too training or lead to an error.
 
+# Citing this work
+If you would like to cite this work, please use the BibTeX syntax shown below:
+```
+@article{oruche2023attention,
+  title={Attention-based Domain Adaption Forecasting of Streamflow in Data Sparse Regions},
+  author={Oruche, Roland and O'Donncha, Fearghal},
+  journal={arXiv preprint arXiv:2302.05386},
+  year={2023}
+}
+```
 ## Contact
-- Primary contact: Fearghal O'Donncha (feardonn(at)ie(dot)ibm(dot)com)
-- Other contacts: Roland Oruche (rro2q2(at)umsystem(dot)edu)
+- Primary contact: Roland Oruche (roruche23@gmail.com)
+- Other contacts: Fearghal O'Donncha (feardonn@ie.ibm.com)
 
