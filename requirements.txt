@@ -8,3 +8,4 @@ yellowbrick
 omegaconf
 pathlib
 hydra-core
+wandb
