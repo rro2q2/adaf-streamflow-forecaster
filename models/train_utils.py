@@ -6,14 +6,14 @@ import logging
 import numpy as np
 from yellowbrick.text import TSNEVisualizer
 
-from neuralhydrology.datasetzoo import get_dataset
-from neuralhydrology.datasetzoo.basedataset import BaseDataset
-from neuralhydrology.utils.config import Config
-import neuralhydrology.training.loss as loss
-from neuralhydrology.utils.logging_utils import setup_logging
-from neuralhydrology.training import get_loss_obj, get_regularization_obj
-from neuralhydrology.evaluation import get_tester
-from neuralhydrology.evaluation.tester import BaseTester
+from neuralhydrology.neuralhydrology.datasetzoo import get_dataset
+from neuralhydrology.neuralhydrology.datasetzoo.basedataset import BaseDataset
+from neuralhydrology.neuralhydrology.utils.config import Config
+import neuralhydrology.neuralhydrology.training.loss as loss
+from neuralhydrology.neuralhydrology.utils.logging_utils import setup_logging
+from neuralhydrology.neuralhydrology.training import get_loss_obj, get_regularization_obj
+from neuralhydrology.neuralhydrology.evaluation import get_tester
+from neuralhydrology.neuralhydrology.evaluation.tester import BaseTester
 
 def _get_folder_structure(domain_cfg: Config, logger: logging):
         _create_folder_structure(domain_cfg)
@@ -83,23 +83,3 @@ def get_station_id(results):
         nse_median = np.median(results["NSE"].values)
         station_id = results.loc[results['NSE'] == nse_median]["basin"].values[0]
         return station_id
-
-# TODO: Work on later 
-def create_tsne_plot(source_feature, target_feature):
-    combined_feature = dict()
-    combined_feature["data"], combined_feature["target"] = [], []
-    source_feature = source_feature.squeeze(1)
-    target_feature = target_feature.squeeze(1)
-    for s in source_feature:
-        combined_feature["data"].append(s.cpu().detach().numpy())
-        combined_feature["target"].append("source")
-    
-    for t in target_feature:
-        combined_feature["data"].append(t.cpu().detach().numpy())
-        combined_feature["target"].append("target")
-        
-    X, y = combined_feature["data"], combined_feature["target"]
-    tsne = TSNEVisualizer(colors=("blue", "red"))
-    tsne.fit(X, y)
-    # Save figure
-    tsne.show(outpath="fig/tsne_adapted.png")

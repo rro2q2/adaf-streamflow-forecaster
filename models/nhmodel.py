@@ -10,13 +10,13 @@ from constants import *
 from utils import get_test_results, get_metric_values, get_metric_median, get_metric_mean, get_model_epoch, get_config_map
 from models.train_utils import get_station_id
 
-from neuralhydrology.utils.config import Config
-from neuralhydrology.modelzoo.head import get_head
-from neuralhydrology.nh_run import start_run, finetune
-from neuralhydrology.modelzoo.cudalstm import CudaLSTM
-from neuralhydrology.modelzoo.gru import GRU
-from neuralhydrology.training.basetrainer import BaseTrainer, LOGGER
-from neuralhydrology.evaluation import get_tester
+from neuralhydrology.neuralhydrology.utils.config import Config
+from neuralhydrology.neuralhydrology.modelzoo.head import get_head
+from neuralhydrology.neuralhydrology.nh_run import start_run, finetune
+from neuralhydrology.neuralhydrology.modelzoo.cudalstm import CudaLSTM
+from neuralhydrology.neuralhydrology.modelzoo.gru import GRU
+from neuralhydrology.neuralhydrology.training.basetrainer import BaseTrainer, LOGGER
+from neuralhydrology.neuralhydrology.evaluation import get_tester
 
 
 class NH_Model():

@@ -4,9 +4,9 @@ import numpy as np
 from typing import Dict
 import torch.nn.functional as F
 
-from neuralhydrology.modelzoo.inputlayer import InputLayer
-from neuralhydrology.modelzoo.head import get_head
-from neuralhydrology.utils.config import Config
+from neuralhydrology.neuralhydrology.modelzoo.inputlayer import InputLayer
+from neuralhydrology.neuralhydrology.modelzoo.head import get_head
+from neuralhydrology.neuralhydrology.utils.config import Config
 
 
 class Encoder(nn.Module):
