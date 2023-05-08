@@ -10,3 +10,6 @@ pathlib
 hydra-core
 wandb
 xarray
+numba
+ruamel.yaml
+tensorboard
