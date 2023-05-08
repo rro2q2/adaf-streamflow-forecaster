@@ -15,9 +15,9 @@ from models.train_utils import _get_loss_obj, _set_regularization, _get_data_loa
     _get_tester, data_to_device, _save_weights_and_optimizer, get_tester, get_station_id
 from utils import get_model_epoch, get_config_map, get_test_results, get_metric_values, get_metric_median, get_metric_mean
 
-from neuralhydrology.neuralhydrology.utils.config import Config
-from neuralhydrology.neuralhydrology.training.logger import Logger
-from neuralhydrology.neuralhydrology.modelzoo.inputlayer import InputLayer
+from neuralhydrology.utils.config import Config
+from neuralhydrology.training.logger import Logger
+from neuralhydrology.modelzoo.inputlayer import InputLayer
 import wandb
 
 LOGGER = logging.getLogger(__name__)
