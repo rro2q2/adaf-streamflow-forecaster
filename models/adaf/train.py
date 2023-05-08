@@ -12,7 +12,7 @@ from pathlib import Path
 from omegaconf import DictConfig
 from models.adaf.model import ADAF
 from models.train_utils import _get_loss_obj, _set_regularization, _get_data_loader, _get_dataset, _get_folder_structure, \
-    _get_tester, data_to_device, _save_weights_and_optimizer, get_tester, get_station_id
+    _get_tester, data_to_device, _save_weights_and_optimizer, get_tester
 from utils import get_model_epoch, get_config_map, get_test_results, get_metric_values, get_metric_median, get_metric_mean
 
 from neuralhydrology.utils.config import Config
@@ -37,8 +37,6 @@ class ADAF_Trainer(nn.Module):
         self._scaler = {}
         self.validator = None
         self.is_wandb = False
-        self.epoch_list = {1, 5, 10, 20, 50, 100}
-        self.saved_runs = {}
         
         # Hyper parameters
         self._lambda = -0.1 
@@ -197,8 +195,8 @@ class ADAF_Trainer(nn.Module):
                 target_gt['per_basin_target_stds'] = target_data['per_basin_target_stds']
                 
                 # Compute the loss for source and target network
-                source_loss = self.criterion(source_pred, source_gt)
-                target_loss = self.criterion(target_pred, target_gt)
+                source_loss, source_all_losses = self.criterion(source_pred, source_gt)
+                target_loss, target_all_losses = self.criterion(target_pred, target_gt)
                 
                 # Combine attention features from source and target networks
                 # to pass though a dense linear layer for domain invariance
@@ -244,11 +242,6 @@ class ADAF_Trainer(nn.Module):
             
             # Run validation during training
             self.validate(epoch)
-            
-            # Run evaluation at different epoch points
-            if (epoch+1) in self.epoch_list:
-                self.evaluate()
-                self.saved_runs = self.save_at_epoch(self.model_name, epoch+1, self.saved_runs)
         
         # 4. Log an artifact to W&B
         # wandb.log_artifact(self.tgt_model)
@@ -372,11 +365,6 @@ class ADAF_Trainer(nn.Module):
         neg_vals = [val for val in nse_vals if val < 0.0]
         LOGGER.info(f"nse_less_than_zero: {len(neg_vals)}")
         
-        LOGGER.info("############### SAVED RUNS ###############")
-        # Save eval results at specified epochs 
-        for key in self.saved_runs:
-            LOGGER.info(f"{key}: {self.saved_runs[key]}")
-        
         if self.is_wandb:
             wandb.log({
                 "nse_median": nse_median,
@@ -403,11 +391,8 @@ class ADAF_Trainer(nn.Module):
         model_text = f"model: {self.tgt_config_map['model']}" 
         run_dir = '/'.join(self.tgt_config_map['run_dir'].split('/')[4:])
         run_dir_text = f"run_dir: {run_dir}"
-        station_id = get_station_id(self.results)
-        station_id_text = f"station_id: {station_id}"
         
         cur_stream.insert(0, run_dir_text)
-        cur_stream.insert(0, station_id_text)
         cur_stream.insert(0, epochs_text)
         cur_stream.insert(0, model_text)
         

@@ -8,7 +8,6 @@ from omegaconf import DictConfig
 
 from constants import *
 from utils import get_test_results, get_metric_values, get_metric_median, get_metric_mean, get_model_epoch, get_config_map
-from models.train_utils import get_station_id
 
 from neuralhydrology.utils.config import Config
 from neuralhydrology.modelzoo.head import get_head
@@ -306,11 +305,8 @@ class NH_Model():
         model_text = f"model: {self.tar_config_map['model']}"
         run_dir = '/'.join(self.tar_config_map['run_dir'].split('/')[4:])
         run_dir_text = f"run_dir: {run_dir}"
-        station_id = get_station_id(self.results)
-        station_id_text = f"station_id: {station_id}"
         
         cur_stream.insert(0, run_dir_text)
-        cur_stream.insert(0, station_id_text)
         cur_stream.insert(0, epochs_text)
         cur_stream.insert(0, model_text)
         

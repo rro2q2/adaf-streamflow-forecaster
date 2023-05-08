@@ -34,7 +34,7 @@ def _get_dataset(domain_cfg: Config, period: str, _scaler) -> BaseDataset:
     return get_dataset(cfg=domain_cfg, period=period, is_train=True, scaler=_scaler)
 
 def _get_data_loader(domain_cfg: Config, ds: BaseDataset) -> torch.utils.data.DataLoader:
-    return DataLoader(ds, batch_size=domain_cfg.batch_size, shuffle=True, num_workers=domain_cfg.num_workers, drop_last=True)
+    return DataLoader(ds, batch_size=domain_cfg.batch_size, shuffle=True, num_workers=domain_cfg.num_workers, drop_last=True, collate_fn=ds.collate_fn)
 
 def _get_tester(domain_cfg: Config) -> BaseTester:
     return get_tester(cfg=domain_cfg, run_dir=domain_cfg.run_dir, period="validation", init_model=False)
@@ -66,7 +66,8 @@ def _create_folder_structure(domain_cfg):
         
 def data_to_device(data, device):
     for key in data.keys():
-        data[key] = data[key].to(device)
+        if key in {'x_d', 'x_s', 'y', 'per_basin_target_stds'}:
+            data[key] = data[key].to(device)
 
     return data
 
@@ -77,8 +78,3 @@ def get_stream(stream):
 def _save_weights_and_optimizer(model, epoch: int, domain_cfg: Config):
     weight_path = domain_cfg.run_dir / f"model_epoch{epoch:03d}.pt"
     torch.save(model.state_dict(), str(weight_path))
-    
-def get_station_id(results):
-        nse_median = np.median(results["NSE"].values)
-        station_id = results.loc[results['NSE'] == nse_median]["basin"].values[0]
-        return station_id

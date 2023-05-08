@@ -110,7 +110,7 @@ class Discriminator(nn.Module):
         self.embedding_net = InputLayer(self.cfg)
         self.classes = 1
         self.discriminator = nn.Sequential(
-            nn.Linear(in_features=self.cfg.hidden_size+self.embedding_net.output_size, out_features=self.cfg.hidden_size),
+            nn.Linear(in_features=self.cfg.hidden_size, out_features=self.cfg.hidden_size),
             nn.ReLU(),
             nn.Dropout(self.cfg.output_dropout),
             nn.Linear(in_features=self.cfg.hidden_size, out_features=self.classes),
