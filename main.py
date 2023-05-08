@@ -1,6 +1,5 @@
-from models import get_model
 from constants import *
-from neuralhydrology.neuralhydrology.modelzoo.cudalstm import CudaLSTM
+from models import get_model
 import torch
 
 from omegaconf import DictConfig

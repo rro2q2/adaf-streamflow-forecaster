@@ -4,16 +4,15 @@ from pathlib import Path
 from datetime import datetime
 import logging
 import numpy as np
-from yellowbrick.text import TSNEVisualizer
 
-from neuralhydrology.neuralhydrology.datasetzoo import get_dataset
-from neuralhydrology.neuralhydrology.datasetzoo.basedataset import BaseDataset
-from neuralhydrology.neuralhydrology.utils.config import Config
-import neuralhydrology.neuralhydrology.training.loss as loss
-from neuralhydrology.neuralhydrology.utils.logging_utils import setup_logging
-from neuralhydrology.neuralhydrology.training import get_loss_obj, get_regularization_obj
-from neuralhydrology.neuralhydrology.evaluation import get_tester
-from neuralhydrology.neuralhydrology.evaluation.tester import BaseTester
+from neuralhydrology.datasetzoo import get_dataset
+from neuralhydrology.datasetzoo.basedataset import BaseDataset
+from neuralhydrology.utils.config import Config
+import neuralhydrology.training.loss as loss
+from neuralhydrology.utils.logging_utils import setup_logging
+from neuralhydrology.training import get_loss_obj, get_regularization_obj
+from neuralhydrology.evaluation import get_tester
+from neuralhydrology.evaluation.tester import BaseTester
 
 def _get_folder_structure(domain_cfg: Config, logger: logging):
         _create_folder_structure(domain_cfg)

@@ -10,7 +10,7 @@ def get_data(cfg: DictConfig) -> dict:
     _____
     Returns dictionary of lists of the source and target dataset file paths
     """
-    datasets = {"camels-us", "camels-cl", "camels-aus" "camels-gb", "tnc-kenya"}
+    datasets = {"camels-us", "camels-cl"}
     data = dict()
     config_dir = 'configs/'
     if cfg.src_data.lower() not in datasets:

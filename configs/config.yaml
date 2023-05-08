@@ -7,8 +7,3 @@ tgt_data: camels-cl
 
 # model - Choice of model. Options: ['cudalstm', 'gru', etc.]
 model: adaf
-
-# base_model = Choice of base_model (only for adaf at this point). Options ['lstm', 'mlp', 'tcn']
-base_model: mlp
-
-viz: prediction
