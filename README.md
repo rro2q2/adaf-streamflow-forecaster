@@ -1,5 +1,16 @@
+<div align="center">
+  
+# Attention-based Domain Adaptation Forecasting of Streamflow in Data Sparse Regions
 
+<a href="https://pytorch.org/get-started/locally/"><img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-ee4c2c?logo=pytorch&logoColor=white"></a>
+<a href="https://hydra.cc/"><img alt="Config: Hydra" src="https://img.shields.io/badge/Config-Hydra-89b8cd"></a>
+[![Paper](http://img.shields.io/badge/arXiv-2302.05386-B31B1B.svg)](https://arxiv.org/abs/2302.05386)
 
+</div>
+
+<p align="center">
+  <img src="figs/main_arch.png" />
+</p>
 
 This is the official repository for the ICLR 2023 workshop paper on Climate Change AI titled [Attention-based Domain Adaptation Forecasting of Streamflow in Data Sparse Regions](https://s3.us-east-1.amazonaws.com/climate-change-ai/papers/iclr2023/14/paper.pdf).
 
