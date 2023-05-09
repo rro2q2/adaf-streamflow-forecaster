@@ -17,7 +17,7 @@ This is the official repository for the ICLR 2023 workshop paper on Climate Chan
 ## Prerequisites
 ### Python environment
 - Python: 3.8+
-- We recommend to use Anaconda/Miniconda. With one of the two installed, a dedicated environment with all requirements will be added to the project.
+- We recommend using Anaconda/Miniconda. With one of the two installed, a dedicated environment with all requirements will be added to the project.
 
 ### Hardware Requirements
 For improving model training and evaluation, we recommend using a multiple GPU cores. The CPU cores may take a long time too training or lead to an error.
@@ -66,6 +66,12 @@ If you would like to cite this work, please use the BibTeX syntax shown below:
   year={2023}
 }
 ```
+
+# Acknowledgements
+Our work builds upon the source code and data from the following projects:
+- [Neuralhydrology](https://github.com/neuralhydrology/neuralhydrology)
+
+We thank all their contributors and maintainers!
 ## Contact
 - Primary contact: Roland Oruche (roruche23@gmail.com)
 - Other contacts: Fearghal O'Donncha (feardonn@ie.ibm.com)
