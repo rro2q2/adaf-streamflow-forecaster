@@ -5,5 +5,5 @@ src_data: camels-us
 # tgt_dataset - Choice of target dataset. Options: ['camels_cl', or 'tnc_kenya']
 tgt_data: camels-cl
 
-# model - Choice of model. Options: ['cudalstm', 'gru', etc.]
+# model - Choice of model. Options: ['cudalstm', 'gru', or 'adaf']
 model: adaf

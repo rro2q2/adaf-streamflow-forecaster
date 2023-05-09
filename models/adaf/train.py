@@ -195,8 +195,8 @@ class ADAF_Trainer(nn.Module):
                 target_gt['per_basin_target_stds'] = target_data['per_basin_target_stds']
                 
                 # Compute the loss for source and target network
-                source_loss, source_all_losses = self.criterion(source_pred, source_gt)
-                target_loss, target_all_losses = self.criterion(target_pred, target_gt)
+                source_loss, _ = self.criterion(source_pred, source_gt)
+                target_loss, _ = self.criterion(target_pred, target_gt)
                 
                 # Combine attention features from source and target networks
                 # to pass though a dense linear layer for domain invariance

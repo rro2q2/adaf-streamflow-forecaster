@@ -104,9 +104,7 @@ class NH_Model():
         # Replace head of the model
         # This would be helpful of reinitializing the head and adjust for target dataset distribution 
         transfer_model.head = get_head(cfg=cfg, n_in=cfg.hidden_size, n_out=len(cfg.target_variables))
-
-        print("Type of model:")
-        print(type(transfer_model))
+        
         return transfer_model
     
     
@@ -252,7 +250,6 @@ class NH_Model():
         self.eval_run(run_dir=run_dir, period="test")
         model_epoch = get_model_epoch(config_map["epochs"])
         self.results = get_test_results(run_dir, model_epoch)
-        print(self.results)
         
     def save(self) -> None:  
         # Create stream from stdout to collect model results
