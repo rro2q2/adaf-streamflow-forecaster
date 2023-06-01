@@ -59,10 +59,11 @@ python main.py model=gru
 ## Citing this work
 If you would like to cite this work, please use the BibTeX syntax shown below:
 ```
-@article{oruche2023attention,
-  title={Attention-based Domain Adaption Forecasting of Streamflow in Data Sparse Regions},
-  author={Oruche, Roland and O'Donncha, Fearghal},
-  journal={arXiv preprint arXiv:2302.05386},
+@inproceedings{oruche2023attentionbased,
+  title={Attention-based Domain Adaptation Forecasting of Streamflow in Data-Sparse Regions},
+  author={Oruche, Roland R and O'Donncha, Fearghal},
+  booktitle={ICLR 2023 Workshop on Tackling Climate Change with Machine Learning},
+  url={https://www.climatechange.ai/papers/iclr2023/14},
   year={2023}
 }
 ```
